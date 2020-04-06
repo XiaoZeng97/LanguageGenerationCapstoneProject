@@ -242,7 +242,7 @@ parser.add_argument('-subreddit_num_clusters', type=int, default=8, help='number
 
 args = parser.parse_args()
 
-filtered_comments = pd.read_csv(args.input_csv)
+filtered_comments = pd.read_csv(args.input_csv,low_memory=False)
 cluster_main(filtered_comments, "subreddit", args.subreddit_num_clusters, args.subreddit_min_df, args.subreddit_max_df)
 cluster_main(filtered_comments, "author", args.author_num_clusters, args.author_min_df, args.author_max_df)
 filtered_comments.to_csv(args.output_csv)
